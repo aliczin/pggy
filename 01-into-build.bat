@@ -1,0 +1,1 @@
+docker run -it --rm postgres-master-vanilla /bin/sh -c "su -c bash postgres"

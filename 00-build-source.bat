@@ -1,0 +1,1 @@
+docker build -t postgres-master-vanilla ./01-build/
