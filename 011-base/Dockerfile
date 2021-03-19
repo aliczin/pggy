@@ -8,7 +8,7 @@ ENV PGPASSWORD postgrepassword
 COPY simple-docker-entrypoint.sh /
 VOLUME /iczin/pgdata
 
-#STOPSIGNAL SIGINT
+STOPSIGNAL SIGINT
 
 ENV LANG ru_RU.utf8
 USER postgres

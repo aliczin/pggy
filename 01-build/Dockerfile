@@ -9,6 +9,8 @@ ENV PGDATABASE "" \
     PGUSERNAME "" \
     PGPASSWORD ""
 
+COPY patches /patches
+
 # https://ftp.postgresql.org/pub/source/
 # https://codeload.github.com/postgres/postgres/tar.gz/master
 
@@ -37,6 +39,7 @@ RUN set -ex \
            locales \
            perl \
            libfindbin-libs-perl \
+           patch \
         \
         && rm -rf /var/lib/apt/lists/* \
         && localedef -i ru_RU -c -f UTF-8 ru_RU.utf8 \
@@ -61,6 +64,8 @@ RUN set -ex \
         \
         && ls -al /home/postgres/src \
         && cd /home/postgres/src/postgres-master \
+        && mv /patches/* ./ \
+        && sh ./apply-patches.sh \
         && su postgres -c "./configure \
                 --enable-integer-datetimes \
                 --enable-thread-safety \
@@ -91,5 +96,6 @@ RUN set -ex \
            unzip \
            perl \
            libfindbin-libs-perl \
+           patch \
         && apt-get install -y libxml2 \
         && rm -rf /var/lib/apt/lists/*
