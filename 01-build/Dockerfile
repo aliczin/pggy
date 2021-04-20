@@ -65,7 +65,7 @@ RUN set -ex \
         && ls -al /home/postgres/src \
         && cd /home/postgres/src/postgres-master \
         && mv /patches/* ./ \
-        && sh ./apply-patches.sh \
+#        && sh ./apply-patches.sh \ TODO
         && su postgres -c "./configure \
                 --enable-integer-datetimes \
                 --enable-thread-safety \
